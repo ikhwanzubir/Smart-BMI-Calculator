@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <h3>by Kapt (Dr) Muhammad Ikhwan</h3>
+
+    <form action="/calculate" method="post">
+        Height in cm: <input type="number" name="height"><br><br>
+        Weight in kg: <input type="number" name="weight"><br><br>
+        <input type="submit" value="CALCULATE">
+    </form>
+
+    {% if bmi %}
+        <h4>Current BMI: {{ bmi }}</h4>
+    {% endif %}
+</body>
+</html>
