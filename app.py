@@ -17,6 +17,9 @@ def calculate():
 # Calculate the weight for the target BMI using the formula: weight = BMI * height^2
     target_weight = target_bmi * (height_in_meters**2)
 
+    needtolose = 0
+    cangain = 0
+
     if target_weight > weight:
       needtolose = round(target_weight - weight, 2)
 
