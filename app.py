@@ -14,11 +14,13 @@ def calculate():
 
     bmi = round(weight / (height_in_meters**2), 2)
 
-    # Calculate the weight for the target BMI using the formula: weight = BMI * height^2
+# Calculate the weight for the target BMI using the formula: weight = BMI * height^2
     target_weight = target_bmi * (height_in_meters**2)
     difference = round(target_weight - weight, 2)
 
-    return render_template('bmi_calculator.html', bmi=bmi, target_bmi=target_bmi, difference=difference)
+    return render_template('bmi_calculator.html', height=height_in_meters, 
+                           weight=weight, bmi=bmi, target_bmi=target_bmi, 
+                           difference=difference)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)

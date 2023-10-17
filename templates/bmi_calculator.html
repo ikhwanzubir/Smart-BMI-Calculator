@@ -17,9 +17,18 @@
     </form>
 
     {% if bmi %}
+        <h4>Height: {{ height }} m</h4>
+        <h4>Weight: {{ weight }} kg</h4>
         <h4>Current BMI: {{ bmi }}</h4>
         <h4>Target BMI: {{ target_bmi }}</h4>
-        <h4>Difference in kg: {{ difference }}</h4>
+    {% endif %}
+
+    {% if bmi > target_bmi %}
+        <h4>You need to lose {{ difference }} kg</h4>
+    {% endif %}
+
+    {% if bmi < target_bmi %}
+        <h4>You can gain up to {{ difference }} kg</h4>
     {% endif %}
 </body>
 </html>
