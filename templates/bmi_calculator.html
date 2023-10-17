@@ -23,12 +23,13 @@
         <h4>Target BMI: {{ target_bmi }}</h4>
     {% endif %}
 
-    {% if bmi > target_bmi %}
-        <h4>You need to lose {{ difference }} kg</h4>
+    {% if cangain %}
+        <h4>You can gain up to {{ cangain }} kg</h4>
     {% endif %}
 
-    {% if bmi < target_bmi %}
-        <h4>You can gain up to {{ difference }} kg</h4>
+    {% if needtolose %}
+        <h4>You can gain up to {{ needtolose }} kg</h4>
     {% endif %}
+
 </body>
 </html>
