@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template('bmi_calculator.html')
 
-@app.route('/calculate', methods=['POST'])
+@app.route('/calculate', methods=['POST', 'GET'])
 def calculate():
     height_in_meters = float(request.form.get('height')) / 100  # convert cm to meters
     weight = float(request.form.get('weight'))
@@ -26,7 +26,7 @@ def calculate():
     if weight > target_weight:
       cangain = round(weight - target_weight, 2)
 
-    return render_template('bmi_calculator.html', height=height_in_meters, 
+    return render_template('bmi_calculator.html', height=height_in_cm, 
                            weight=weight, bmi=bmi, target_bmi=target_bmi, 
                            needtolose=needtolose, cangain=cangain)
 
