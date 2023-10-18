@@ -18,6 +18,7 @@ def calculate():
 
 # Calculate the weight for the target BMI using the formula: weight = BMI * height^2
     target_weight = target_bmi * (height_in_meters**2)
+    target_weight_round = round(target_weight, 2)
 
     needtolose = 0
     cangain = 0
@@ -29,8 +30,9 @@ def calculate():
       cangain = round(weight - target_weight, 2)
 
     return render_template('bmi_calculator.html', height=height_in_cm, 
-                           weight=weight, bmi=bmi, target_bmi=target_bmi, 
-                           needtolose=needtolose, cangain=cangain)
+                           weight=weight, bmi=bmi, target_bmi=target_bmi,  
+                           target_weight_round=target_weight_round, needtolose=needtolose,
+                           cangain=cangain)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
