@@ -8,9 +8,11 @@ def index():
 
 @app.route('/calculate', methods=['POST', 'GET'])
 def calculate():
-    height_in_meters = float(request.form.get('height')) / 100  # convert cm to meters
+    height_in_cm = float(request.form.get('height'))  # convert cm to meters
     weight = float(request.form.get('weight'))
     target_bmi = float(request.form.get('target_bmi'))
+
+    height_in_meters = height_in_cm / 100
 
     bmi = round(weight / (height_in_meters**2), 2)
 
