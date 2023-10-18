@@ -4,13 +4,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('bmi_calculator.html')
+    return render_template('bmi_calculator.html', target_bmi=26.9)
 
 @app.route('/calculate', methods=['POST', 'GET'])
 def calculate():
     height_in_cm = float(request.form.get('height'))  # convert cm to meters
     weight = float(request.form.get('weight'))
-    target_bmi = float(request.form.get('target_bmi'))
+    target_bmi = float(request.form.get('target_bmi', 26.9))
 
     height_in_meters = height_in_cm / 100
 
