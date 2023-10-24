@@ -3,11 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+    <title>BMIndexer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+
+    <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          background-color: #454545;
+      }
+      .calculator-container {
+          background-color: #E0E0E0;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0px 10px 30px rgba(0, 0, 0, 1.0);
+          width: 80%;
+          max-width: 500px;
+          margin-top: 20px;
+      }
+      .form-label, .form-check-label, #textor {
+          color: #333333;  /* Even Darker Grey for text */
+      }
+      .mb-3 {
+          margin-bottom: 1rem;
+      }
+  </style>
+
+  </head>
 <body>
-    <h1 class="text-center mt-3">BMI Calculator</h1>
+  <div class="calculator-container">
+    <div class="mb-3">
+        <h1 class="display-6 text-center mb-3">BMIndexer</h1>
 
     <form action="/calculate"  class="text-center" method="post">
         Height in cm: <input type="number" name="height" value="{{ height }}"><br><br>
@@ -16,6 +46,8 @@
       <button type="submit" class="btn btn-primary">CALCULATE</button>
       <button type="button" class="btn btn-secondary" onclick="window.location.href='/';">RESET</button>
     </form>
+
+  </div>
 
     {% if bmi %}
 
@@ -36,6 +68,8 @@
   <h4 class="text-center" style="background-color: lightgreen; color: black;">You can gain up to {{ needtolose }} kg</h4>
 
     {% endif %}
+
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
