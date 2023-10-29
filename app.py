@@ -4,7 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('bmi_calculator.html', target_bmi=26.9)
+    return render_template('index.html', target_bmi=26.9)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/calculate', methods=['POST', 'GET'])
 def calculate():
@@ -16,20 +20,31 @@ def calculate():
 
     bmi = round(weight / (height_in_meters**2), 2)
 
-# Calculate the weight for the target BMI using the formula: weight = BMI * height^2
-    target_weight = target_bmi * (height_in_meters**2)
-    target_weight_round = round(target_weight, 2)
-
+    mustgain = 0
     needtolose = 0
     cangain = 0
 
-    if target_weight > weight:
-      needtolose = round(target_weight - weight, 2)
+    if bmi < 18.5:
+      target_bmi_underweight = 18.5
+      target_weight = target_bmi_underweight * (height_in_meters**2)
+      target_weight_round = round(target_weight, 2)
+      mustgain = round(target_weight - weight, 1)
 
-    if weight > target_weight:
-      cangain = round(weight - target_weight, 2)
+      return render_template('index.html', height=height_in_cm, 
+                           weight=weight, bmi=bmi, target_bmi=target_bmi_underweight,  
+                           target_weight_round=target_weight_round, mustgain=mustgain)
 
-    return render_template('bmi_calculator.html', height=height_in_cm, 
+    else:
+      target_weight = target_bmi * (height_in_meters**2)
+      target_weight_round = round(target_weight, 2)
+
+      if target_weight > weight:
+        needtolose = round(target_weight - weight, 1)
+
+      if weight > target_weight:
+        cangain = round(weight - target_weight, 1)
+
+      return render_template('index.html', height=height_in_cm, 
                            weight=weight, bmi=bmi, target_bmi=target_bmi,  
                            target_weight_round=target_weight_round, needtolose=needtolose,
                            cangain=cangain)
