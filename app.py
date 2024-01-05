@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from datetime import datetime
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -48,6 +49,43 @@ def calculate():
                            weight=weight, bmi=bmi, target_bmi=target_bmi,  
                            target_weight_round=target_weight_round, needtolose=needtolose,
                            cangain=cangain)
+    
+@app.route('/calculatetarget', methods=['POST', 'GET'])
+def calculate_target():
+    data = request.json
+
+    # Extract and convert data
+    height_in_cm = float(data.get('height'))  # Convert string to float
+    weight = float(data.get('weight'))
+    target_bmi = float(data.get('target_bmi', 26.9))
+
+    height_in_meters = height_in_cm / 100
+
+    target_weight = target_bmi * (height_in_meters ** 2)
+    cangain = round(weight - target_weight, 1)
+
+    selected_date_str = data['date']
+
+    # Convert selected_date_str to a datetime object
+    selected_date = datetime.strptime(selected_date_str, "%Y-%m-%d")
+
+    selected_date_str_formatted = selected_date.strftime("%d-%m-%Y")
+
+    # Calculate the number of weeks from today until selected_date
+    today = datetime.today()
+    delta = selected_date - today
+    weeks = delta.days / 7
+
+    if weeks <= 0:
+        return jsonify({"error": "Selected date must be in the future"})
+
+    # Calculate weight to lose per week
+    weight_per_week = cangain / weeks
+
+    html_response = f"Selected date: {selected_date_str_formatted}<br>Days left: {delta.days}<br>Weight to lose per week: {weight_per_week:.2f} kg"
+
+    return jsonify(html=html_response)
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
