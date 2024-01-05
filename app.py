@@ -13,9 +13,13 @@ def about():
 
 @app.route('/calculate', methods=['POST', 'GET'])
 def calculate():
-    height_in_cm = float(request.form.get('height'))  # convert cm to meters
-    weight = float(request.form.get('weight'))
-    target_bmi = float(request.form.get('target_bmi', 26.9))
+    try:
+        height_in_cm = float(request.form.get('height'))  # convert cm to meters
+        weight = float(request.form.get('weight'))
+        target_bmi = float(request.form.get('target_bmi', 26.9))
+    except (TypeError, ValueError):
+        errormessage = "Please enter height and weight"
+        return render_template('index.html', errormessage=errormessage, target_bmi=26.9)
 
     height_in_meters = height_in_cm / 100
 
@@ -24,6 +28,7 @@ def calculate():
     mustgain = 0
     needtolose = 0
     cangain = 0
+    cangainpercent = 0
 
     if bmi < 18.5:
       target_bmi_underweight = 18.5
@@ -44,11 +49,12 @@ def calculate():
 
       if weight > target_weight:
         cangain = round(weight - target_weight, 1)
+        cangainpercent = round((cangain / weight) * 100, 1)
 
       return render_template('index.html', height=height_in_cm, 
                            weight=weight, bmi=bmi, target_bmi=target_bmi,  
                            target_weight_round=target_weight_round, needtolose=needtolose,
-                           cangain=cangain)
+                           cangain=cangain, cangainpercent=cangainpercent)
     
 @app.route('/calculatetarget', methods=['POST', 'GET'])
 def calculate_target():

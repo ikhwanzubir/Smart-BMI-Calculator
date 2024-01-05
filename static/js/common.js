@@ -1,3 +1,5 @@
+
+
 document.getElementById('toggleButton').addEventListener('click', function() {
     var form = document.getElementById('formContainer');
     if (form.style.display === 'none') {
@@ -6,6 +8,7 @@ document.getElementById('toggleButton').addEventListener('click', function() {
         form.style.display = 'none';
     }
 });
+
 
 $('#datePicker').change(function() {
     var selectedDate = $(this).val();
@@ -34,4 +37,3 @@ $('#datePicker').change(function() {
         }
     });
 });
-

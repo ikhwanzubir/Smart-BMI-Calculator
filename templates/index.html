@@ -53,6 +53,10 @@
 
   </div>
 
+  {% if errormessage %}
+    <h4 class="text-center mt-3">{{ errormessage }}</h4>
+  {% endif %}
+
     {% if bmi %}
         <h4 class="text-center mt-3">Current BMI: {{ bmi }} kg/m&sup2</h4>
         <h4 class="text-center">Target weight: {{ target_weight_round }} kg</h4>
@@ -60,10 +64,10 @@
 
     {% if cangain %}
       {% if cangain < 10 %}
-        <h4 class="text-center" style="background-color: yellow; color: black;">You need to lose {{ cangain }} kg</h4>
+        <h4 class="text-center" style="background-color: yellow; color: black;">You need to lose {{ cangain }} kg ({{ cangainpercent}}%)</h4>
       {% else %}
         <div class="text-center">
-        <h4 class="text-center" style="background-color: red; color: yellow;">You need to lose {{ cangain }} kg</h4>
+        <h4 class="text-center" style="background-color: red; color: yellow;">You need to lose {{ cangain }} kg ({{ cangainpercent}}%)</h4>
         <button type="button" class="btn btn-primary mt-3" id="toggleButton">Calculate weekly target loss</button>
       </div>
       {% endif %}
