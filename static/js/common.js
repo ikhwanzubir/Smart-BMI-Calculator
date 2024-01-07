@@ -42,6 +42,7 @@ $('#datePicker').change(function() {
             else if (response.error) {
                 // Handle error case
                 $("#result").html(`<div class='error'>${response.error}</div>`);
+                $("#minimaldate").empty();
             }
         }
     });

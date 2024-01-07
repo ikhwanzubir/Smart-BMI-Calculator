@@ -22,7 +22,7 @@ def calculate():
         weight = float(request.form.get('weight'))
         target_bmi = float(request.form.get('target_bmi', 26.9))
     except (TypeError, ValueError):
-        errormessage = "Please enter height and weight"
+        errormessage = "Sila isi tinggi dan berat"
         return render_template('index.html', errormessage=errormessage, target_bmi=26.9)
 
     height_in_meters = height_in_cm / 100
