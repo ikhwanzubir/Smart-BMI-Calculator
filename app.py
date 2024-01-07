@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -6,6 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html', target_bmi=26.9)
+
+@app.route('/panduan')
+def panduan():
+    return render_template('panduan.html')
 
 @app.route('/about')
 def about():
@@ -82,15 +86,29 @@ def calculate_target():
     delta = selected_date - today
     weeks = delta.days / 7
 
+    daysneededminimal = 0
+    minimaldate = 0
+
     if weeks <= 0:
         return jsonify({"error": "Tarikh pilihan mestilah di hadapan"})
+
+    html_response = "html response"  # Initialize html_response
+    html_minimaldate = "html minimal date"  # Initialize html_minimaldate
 
     # Calculate weight to lose per week
     weight_per_week = cangain / weeks
 
-    html_response = f"Tarikh pilihan: {selected_date_str_formatted}<br>Hari tinggal: {delta.days}<br>Berat mesti diturunkan setiap minggu: {weight_per_week:.2f} kg"
+    if weight_per_week > 1.0:
+      daysneededminimal = round(cangain / (1/7))
+      minimaldate = today + timedelta(days=daysneededminimal)
+      minimaldate_formatted = minimaldate.strftime("%d-%m-%Y")
+      html_minimaldate = f"Tarikh yang dipilih tidak optimum.<br>Tarikh yang optimum ialah pada<br>{minimaldate_formatted} ({daysneededminimal} hari lagi)<br>dengan kadar penurunan 0.5 hingga 1.0 kg seminggu"
+      html_response = ""
+    else:
+       html_response = f"Tarikh pilihan: {selected_date_str_formatted}<br>Hari tinggal: {delta.days}<br>Berat mesti diturunkan setiap minggu: {weight_per_week:.2f} kg"
+       html_minimaldate = ""
 
-    return jsonify(html=html_response)
+    return jsonify(html=html_response, htmlminimaldate=html_minimaldate)
 
 
 if __name__ == '__main__':

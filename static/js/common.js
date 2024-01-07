@@ -1,13 +1,14 @@
-
-
-document.getElementById('toggleButton').addEventListener('click', function() {
-    var form = document.getElementById('formContainer');
-    if (form.style.display === 'none') {
-        form.style.display = 'block';
-    } else {
-        form.style.display = 'none';
-    }
-});
+var toggleButton = document.getElementById('toggleButton');
+if (toggleButton) {
+    toggleButton.addEventListener('click', function() {
+        var form = document.getElementById('formContainer');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    });
+}
 
 
 $('#datePicker').change(function() {
@@ -30,7 +31,13 @@ $('#datePicker').change(function() {
             // Update the result div with the HTML from the response
             if (response.html) {
                 $("#result").html(response.html);
-            } else if (response.error) {
+            }
+
+            if (response.htmlminimaldate) {
+                $("#minimaldate").html(response.htmlminimaldate);
+            }
+
+            else if (response.error) {
                 // Handle error case
                 $("#result").html(`<div class='error'>Error: ${response.error}</div>`);
             }
