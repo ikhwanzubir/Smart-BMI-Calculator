@@ -90,7 +90,7 @@ def calculate_target():
     minimaldate = 0
 
     if weeks <= 0:
-        return jsonify({"error": "Tarikh pilihan mestilah di hadapan"})
+        return jsonify({"error": "Sila pilih tarikh"})
 
     html_response = "html response"  # Initialize html_response
     html_minimaldate = "html minimal date"  # Initialize html_minimaldate

@@ -31,15 +31,17 @@ $('#datePicker').change(function() {
             // Update the result div with the HTML from the response
             if (response.html) {
                 $("#result").html(response.html);
+                $("#minimaldate").empty();
             }
 
             if (response.htmlminimaldate) {
                 $("#minimaldate").html(response.htmlminimaldate);
+                $("#result").empty();
             }
 
             else if (response.error) {
                 // Handle error case
-                $("#result").html(`<div class='error'>Error: ${response.error}</div>`);
+                $("#result").html(`<div class='error'>${response.error}</div>`);
             }
         }
     });
