@@ -44,11 +44,11 @@
         <h1 class="display-6 text-center mb-3">BMIndexer</h1>
 
     <form action="/calculate" class="text-center" method="post">
-        Height in cm: <input type="number" name="height" id="height" value="{{ height }}"><br><br>
-        Weight in kg: <input type="number" step="0.1" name="weight" id="weight" value="{{ weight }}"><br><br>
-        Target BMI (kg/m&sup2): <input type="number" step="0.01" name="target_bmi" id="target_bmi" value="{{ target_bmi }}"><br><br>
-      <button type="submit" class="btn btn-primary">CALCULATE</button>
-      <button type="button" class="btn btn-secondary" onclick="window.location.href='/';">RESET</button>
+        Tinggi (cm): <input type="number" name="height" id="height" value="{{ height }}"><br><br>
+        Berat (kg): <input type="number" step="0.1" name="weight" id="weight" value="{{ weight }}"><br><br>
+        Sasaran BMI (kg/m&sup2): <input type="number" step="0.01" name="target_bmi" id="target_bmi" value="{{ target_bmi }}"><br><br>
+      <button type="submit" class="btn btn-primary">KIRA</button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='/';">SEMULA</button>
     </form>
 
   </div>
@@ -58,35 +58,35 @@
   {% endif %}
 
     {% if bmi %}
-        <h4 class="text-center mt-3">Current BMI: {{ bmi }} kg/m&sup2</h4>
-        <h4 class="text-center">Target weight: {{ target_weight_round }} kg</h4>
+        <h4 class="text-center mt-3">BMI kini: {{ bmi }} kg/m&sup2</h4>
+        <h4 class="text-center">Berat sasaran: {{ target_weight_round }} kg</h4>
     {% endif %}
 
     {% if cangain %}
       {% if cangain < 10 %}
         <div class="text-center">
-          <h4 class="text-center" style="background-color: yellow; color: black;">You need to lose {{ cangain }} kg ({{ cangainpercent}}%)</h4>
-          <button type="button" class="btn btn-primary mt-3" id="toggleButton">Calculate weekly target loss</button>
+          <h4 class="text-center" style="background-color: yellow; color: black;">Anda perlu menurunkan {{ cangain }} kg ({{ cangainpercent}}%)</h4>
+          <button type="button" class="btn btn-primary mt-3" id="toggleButton">Kira sasaran penurunan berat mingguan</button>
         </div>
       {% else %}
         <div class="text-center">
-          <h4 class="text-center" style="background-color: red; color: yellow;">You need to lose {{ cangain }} kg ({{ cangainpercent}}%)</h4>
-          <button type="button" class="btn btn-primary mt-3" id="toggleButton">Calculate weekly target loss</button>
+          <h4 class="text-center" style="background-color: red; color: yellow;">Anda perlu menurunkan {{ cangain }} kg ({{ cangainpercent}}%)</h4>
+          <button type="button" class="btn btn-primary mt-3" id="toggleButton">Kira sasaran penurunan berat mingguan</button>
         </div>
       {% endif %}
     {% endif %}
 
     {% if needtolose %}
-      <h4 class="text-center" style="background-color: lightgreen; color: black;">You can gain up to {{ needtolose }} kg</h4>
+      <h4 class="text-center" style="background-color: lightgreen; color: black;">Anda boleh naik berat sebanyak {{ needtolose }} kg</h4>
     {% endif %}
 
     {% if mustgain %}
-      <h4 class="text-center" style="background-color: red; color: black;">You must gain {{ mustgain }} kg to achieve minimum BMI (18.5 kg/m&sup2)</h4>
+      <h4 class="text-center" style="background-color: red; color: black;">Anda mesti naikkan berat sebanyak {{ mustgain }} kg untuk mencapai BMI minima(18.5 kg/m&sup2)</h4>
     {% endif %}
 
     <div id="formContainer" style="display:none;" class="text-center mt-3">
       <form>
-          <label for="datePicker">Select due date:</label>
+          <label for="datePicker">Pilih tarikh:</label>
           <input type="date" id="datePicker" name="datePicker">
       </form>
     

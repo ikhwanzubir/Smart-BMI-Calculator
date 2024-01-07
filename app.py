@@ -83,12 +83,12 @@ def calculate_target():
     weeks = delta.days / 7
 
     if weeks <= 0:
-        return jsonify({"error": "Selected date must be in the future"})
+        return jsonify({"error": "Tarikh pilihan mestilah di hadapan"})
 
     # Calculate weight to lose per week
     weight_per_week = cangain / weeks
 
-    html_response = f"Selected date: {selected_date_str_formatted}<br>Days left: {delta.days}<br>Weight to lose per week: {weight_per_week:.2f} kg"
+    html_response = f"Tarikh pilihan: {selected_date_str_formatted}<br>Hari tinggal: {delta.days}<br>Berat mesti diturunkan setiap minggu: {weight_per_week:.2f} kg"
 
     return jsonify(html=html_response)
 
