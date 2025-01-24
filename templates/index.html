@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMIndexer by Alpha Coy, 2nd Med Bn</title>
+    <link rel="icon" href="static/favicon.png" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          background-color: #212529;
+      }
+      .calculator-container {
+          background-color: #E0E0E0;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0px 10px 30px rgba(0, 0, 0, 1.0);
+          width: 80%;
+          max-width: 500px;
+          margin-top: 20px;
+      }
+      .form-label, .form-check-label, #textor {
+          color: #333333;  /* Even Darker Grey for text */
+      }
+      .mb-3 {
+          margin-bottom: 1rem;
+      }
+      .text-custom {
+            color: white;
+        }
+  </style>
+
+  </head>
+<body>
+  <div class="calculator-container">
+    <div class="mb-3">
+        <h1 class="display-6 text-center mb-3">BMIndexer</h1>
+
+    <form action="/calculate" class="text-center" method="post">
+        Tinggi (cm): <input type="number" name="height" id="height" value="{{ height }}"><br><br>
+        Berat (kg): <input type="number" step="0.1" name="weight" id="weight" value="{{ weight }}"><br><br>
+        Sasaran BMI (kg/m&sup2): <input type="number" step="0.01" name="target_bmi" id="target_bmi" value="{{ target_bmi }}"><br><br>
+      <button type="submit" class="btn btn-primary">KIRA</button>
+      <button type="button" class="btn btn-secondary" onclick="window.location.href='/';">SEMULA</button>
+    </form>
+
+  </div>
+
+  {% if errormessage %}
+    <h4 class="text-center mt-3">{{ errormessage }}</h4>
+  {% endif %}
+
+    {% if bmi %}
+        <h4 class="text-center mt-3">BMI kini: {{ bmi }} kg/m&sup2</h4>
+        <h4 class="text-center">Berat sasaran: {{ target_weight_round }} kg</h4>
+    {% endif %}
+
+    {% if cangain %}
+      {% if cangain < 10 %}
+        <div class="text-center">
+          <h4 class="text-center" style="background-color: yellow; color: black;">Anda perlu menurunkan {{ cangain }} kg ({{ cangainpercent}}%)</h4>
+          <button type="button" class="btn btn-primary mt-2" id="toggleButton">Kira sasaran penurunan berat mingguan</button>
+        </div>
+      {% else %}
+        <div class="text-center">
+          <h4 class="text-center" style="background-color: red; color: yellow;">Anda perlu menurunkan {{ cangain }} kg ({{ cangainpercent}}%)</h4>
+          <button type="button" class="btn btn-primary mt-2" id="toggleButton">Kira sasaran penurunan berat mingguan</button>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% if needtolose %}
+      <h4 class="text-center" style="background-color: lightgreen; color: black;">Anda boleh naik berat sebanyak {{ needtolose }} kg</h4>
+    {% endif %}
+
+    {% if mustgain %}
+      <h4 class="text-center" style="background-color: red; color: black;">Anda mesti naikkan berat sebanyak {{ mustgain }} kg untuk mencapai BMI minima(18.5 kg/m&sup2)</h4>
+    {% endif %}
+
+    <div id="formContainer" style="display:none;" class="text-center mt-3">
+      <form>
+          <label for="datePicker">Pilih tarikh:</label>
+          <input type="date" id="datePicker" name="datePicker">
+      </form>
+    
+    
+    <h4 id="result" class="text-center mt-3"></h4>
+    <h4 id="minimaldate" class="text-center mt-3"></h4>
+
+  </div>
+
+
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+<script src="{{ url_for('static', filename='js/common.js') }}"></script>
+{% include 'footer.html' %}
+
+</body>
+</html>

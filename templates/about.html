@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMIndexer by Alpha Coy, 2nd Med Bn</title>
+    <link rel="icon" href="static/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        
+        body {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #212529;
+        }
+        .disclaimer-container {
+            background-color: #E0E0E0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 1.0);
+            width: 95%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        .text-custom {
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div class="disclaimer-container">
+    <div>
+        <h1 class="display-6 text-center mb-3">Mengenai BMIndexer</h1>
+            <p>Selamat datang ke aplikasi BMIndexer. Sebuah aplikasi untuk mengira <i>Body Mass Index</i> dengan tepat dan pantas. Di samping itu juga, aplikasi ini boleh:</p>
+            <ul>
+                <li>Mengira sasaran berat badan berdasarkan sasaran BMI.</li>
+                <li>Mengira peratusan berat badan yang terlebih.</li>
+                <li>Mengira sasaran penurunan berat mingguan berdasarkan tarikh yang dipilih.</li>
+                <li>Membuat penilaian sama ada berat badan dapat dicapai pada tarikh yang dipilih atau tidak.</li>
+                <li>Mengira tarikh berat badan sasaran dicapai mengikut kadar penurunan berat badan yang optimum.</li>
+                <li>Memaparkan panduan dan tips penurunan BMI.</li>
+              </ul>
+        
+            <p>Diharap aplikasi ini dapat dimanfaatkan oleh semua pegawai dan anggota Angkatan Tentera Malaysia dalam memastikan kecergasan tubuh sentiasa di tahap terbaik.</p>
+            <p>Sebarang cadangan, teguran atau penambahbaikan boleh dilakukan dengan menghubungi emel di bawah:</p>
+            <div class="text-center">
+                <a href="mailto:ikhwanzubir92@gmail.com?cc=kompalpha2ubat@gmail.com&subject=Mengenai%20BMIndexer&body=Salam%20sejahtera.%20Saya%20ingin%20">
+                    <button class="btn btn-primary" id="Contact Me">Hubungi Kami</button>
+                </a>
+            </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+{% include 'footer.html' %}
+</body>
+</html>

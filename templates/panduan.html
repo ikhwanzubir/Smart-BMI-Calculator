@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMIndexer by Alpha Coy, 2nd Med Bn</title>
+    <link rel="icon" href="static/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        
+        body {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #212529;
+        }
+        .panduan-container {
+            background-color: #E0E0E0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 1.0);
+            width: 95%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        .text-custom {
+            color: white;
+        }
+        .responsive-image {
+        width: 100%;
+        height: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div class="panduan-container">
+    <div>
+        <h3>Pengenalan</h3>
+            <p>Dalam pengurusan berat badan, prinsip asas keseimbangan tenaga perlu difahami.</p>
+            <p>Terdapat 2 komponen dalam keseimbangan tenaga iaitu ;</p>
+            <ul>
+                <li>Tenaga yang diambil.</li>
+                <li>Tenaga yang digunakan.</li>
+            </ul>
+            <p>Tenaga yang diambil adalah daripada pengambilan makanan. Manakala tenaga yang digunakan adalah daripada 3 sumber iaitu ;</p>
+            <ul>
+                <li>Tenaga asas yang digunakan untuk organ badan berfungsi apabila badan berada dalam keadaan rehat tanpa melibatkan sebarang aktiviti fizikal. Tenaga yang diperlukan ini dinamakan sebagai tenaga untuk kadar metabolik asas (Basal Metabolic Rate, BMR).</li>
+                <li>Tenaga yang diperlukan untuk badan memproses makanan didalam badan kita dinamakan kesan termik makanan (thermic effect of food). Tenaga ini adalah sekitar 5-10% daripada keseluruhan tenaga yang diambil seharian.</li>
+                <li>Tenaga yang diperlukan untuk aktiviti fizikal.</li>
+            </ul>
+            <p>Jika jumlah pengambilan tenaga daripada makanan bersamaan dengan penggunaan tenaga maka tidak akan berlaku perubahan berat badan.</p>
+            <img src="{{ url_for('static', filename='images/tenaga-makan-1.jpg') }}" alt="Tenaga diambil - Tenaga digunakan" class="responsive-image">
+            <img src="{{ url_for('static', filename='images/tenaga-makan-2.jpg') }}" alt="Neraca tenaga" class="responsive-image">
+            <p>Dalam situasi di mana jumlah tenaga daripada makanan berlebihan berbanding jumlah tenaga yang digunakan, maka akan berlaku pertambahan berat badan.</p>
+            <p>Manakala apabila pengambilan adalah kurang daripada tenaga yang digunakan seharian, penurunan berat badan akan terjadi kerana kekurangan tenaga tersebut menyebabkan tenaga daripada simpanan tubuh digunakan untuk menampung kekurangan bekalan daripada pengambilan makanan.</p>
+            <img src="{{ url_for('static', filename='images/tenaga-makan-3.jpg') }}" alt="Ketidakseimbangan tenaga ambil dan guna" class="responsive-image">
+            <p>Piramid Makanan Malaysia boleh digunakan bagi merancang pengambilan makanan manakala bagi menentukan jumlah tenaga yang digunakan terdapat formula yang boleh membantu pengiraan.</p>
+            <img src="{{ url_for('static', filename='images/piramid-makanan-tenaga.jpg') }}" alt="Ketidakseimbangan tenaga ambil dan guna" class="responsive-image">
+            <img src="{{ url_for('static', filename='images/piramid-aktiviti.jpg') }}" alt="Ketidakseimbangan tenaga ambil dan guna" class="responsive-image">
+        <h4>Tips menurunkan berat badan</h4>
+            <ul>
+                <li>Menggunakan strategi gabungan antara kawalan pengambilan makanan dan peningkatan aktiviti fizikal adalah diperlukan dalam pengawalan berat badan.</li>
+                <li>Jika hanya mengawal makanan dilakukan TANPA peningkatan aktiviti fizikal, individu tersebut akan berada dalam kelaparan sepanjang proses menurunkan berat badan kerana jumlah pengambilan yang terlalu sedikit diperlukan untuk mendapatkan penurunan berat badan.</li>
+                <li>Jika individu hanya meningkatkan aktiviti fizikal TANPA mengawal pengambilan makanan maka individu tersebut akan berada dalam kepenatan kerana terpaksa melakukan aktiviti yang terlalu banyak untuk mendapatkan penurunan berat badan.</li>
+                <li>Strategi yang terbaik adalah meningkatkan sedikit aktiviti fizikal harian dan mengurangkan sedikit pengambilan makanan supaya individu tidak terasa terlalu lapar mahupun terlalu kepenatan.</li>
+                <li>Secara umumnya, saranan pengambilan tenaga bagi individu yang mempunyai berat badan normal di Malaysia adalah sebanyak 2440kcal bagi lelaki dewasa manakala sebanyak 2000kcal bagi wanita dewasa.</li>
+                <li>Bagi mendapatkan penurunan berat badan, disarankan pengambilan makanan dikurangkan sebanyak 500kcal daripada keperluan sehari.</li>
+                <li>Oleh yang demikian, untuk menurunkan berat badan adalah disarankan bagi wanita mengehad pengambilan diet mereka kepada 1500kcal sehari dan 2000kcal sehari bagi lelaki.</li>
+                <li>Manakala jumlah penggunaan tenaga pula perlu ditingkatkan dengan melakukan aktiviti fizikal berintensiti sederhana sebanyak 90 minit sehari.</li>
+                <li>Contoh aktiviti fizikal berintensiti sederhana adalah seperti :</li>
+                    <ul>
+                        <li>Berjalan pada kelajuan 5-7 km/j</li>
+                        <li>Mengayuh basikal pada kelajuan 8-15 km/j</li>
+                        <li>Menari</li>
+                        <li>Bermain badminton, tenis, bola jaring</li>
+                        <li>Berenang santai dan lain-lain</li>
+                    </ul>
+                <li>Dengan sedikit penurunan pengambilan makanan dan peningkatan aktiviti fizikal ini, keperluan keseluruhan tenaga badan tidak dapat dipenuhi daripada pengambilan makanan harian. Ini menyebabkan sumber simpanan iaitu lemak badan akan digunakan untuk memenuhi keperluan tenaga tersebut.</li>
+                <li>Pembakaran lemak badan ini seterusnya akan menghasilkan penurunan berat badan.</li>
+                <li>Imbangan negatif (-)500kcal sehari akan membolehkan penurunan berat badan sekitar 0.5kg dalam seminggu dapat dicapai.</li>
+                <li>Saranan penurunan berat badan yang selamat adalah 0.5kg -1.0kg seminggu.</li>
+                <li>Penurunan berat badan melebihi 1kg seminggu adalah tidak digalakkan.</li>
+                <li>Individu dewasa yang berlebihan berat badan juga disarankan untuk menurunkan berat badan sebanyak 10% daripada berat semasa dalam tempoh 6 bulan.</li>
+                <li>Bagi kanak-kanak yang masih di dalam fasa pertumbuhan yang menghadapi masalah berat badan, galakan perlu diberikan untuk mereka mengekalkan berat badan atau memperlahankan pertambahan berat badan dengan menggalakkan mereka untuk lebih aktif. Penurunan berat badan adalah tidak digalakkan bagi kumpulan umur ini.</li>
+            </ul>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+{% include 'footer.html' %}
+</body>
+</html>
